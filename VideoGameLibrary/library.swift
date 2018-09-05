@@ -30,7 +30,7 @@ class Library {
     
     func removeGame () {
         
-        print("please enter the index of the game you wish to remove\n")
+        print("\n please enter the index of the game you wish to remove\n")
         
         for index in 0..<gameArray.count {
             print("\(index). \(gameArray[index].title)")

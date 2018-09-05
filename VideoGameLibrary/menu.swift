@@ -23,6 +23,10 @@ class Menu {
             
             var input = getInput()
             
+            if input == "random" {
+                miniGame.guessingGame()
+                help()
+            }
             while validateInput(input) == false {
                 print("Invalid input")
                 input = getInput()
@@ -73,9 +77,6 @@ class Menu {
             help()
         case "8":
             quit()
-        case "9":
-            miniGame.guessingGame()
-            help()
         default:
             break
         }
@@ -87,7 +88,7 @@ class Menu {
     }
     
     func validateInput(_ input: String) -> Bool {
-        let menuOptions = Array(1...9)
+        let menuOptions = Array(1...8)
     
         guard let number = Int(input) else { return false }
         
