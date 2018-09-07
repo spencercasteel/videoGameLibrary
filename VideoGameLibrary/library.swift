@@ -37,15 +37,22 @@ class Library {
                 print("invalid title, please try again:")
                 newGameTitle = readLine()
             }
-            print("please enter game rating")
-            var rating = readLine()
             
-            while rating == nil || rating == "" {
-                print("invalid title, please try again:")
-                rating = readLine()
-            }
+            print("enter game rating")
             
-            let newGame = Game(title: newGameTitle!, rating: rating!)
+            repeat {
+                
+                let line = readLine()!.trimmingCharacters(in: .whitespacesAndNewlines)
+                
+                if line == "e" || line == "t" || line == "m"{
+                    input = line
+                } else {
+                    print("Invalid input, try again")
+                    input = nil
+                }
+            } while input == nil
+            
+            let newGame = Game(title: newGameTitle!, rating: input!)
             
             gameArray.append(newGame)
         } else {
@@ -55,7 +62,16 @@ class Library {
         
     }
     
-    func removeGame () {
+    func getAge() -> Int? {
+        print("age?")
+        if let age = Int(readLine()!) {
+            return age
+        } else {
+            return nil
+        }
+    }
+    
+    func removeGame() {
         
         print("please enter the admin password to remove a game")
         var input: String? = nil
@@ -116,17 +132,29 @@ class Library {
     
     func checkGameOut() {
         
-        
-        
-        
-        
-        for index in 0..<gameArray.count {
-            if gameArray[index].checkedIn {
-                print("\(index). \(gameArray[index].title)")
+        if let age = getAge() {
+            if age >= 18 {
+                for (n, game) in gameArray.enumerated() {
+                    print("\(n). \(game.title)")
+                }
+            } else if age >= 13 {
+                for (n, game) in gameArray.enumerated() {
+                    if game.rating != "m" {
+                    print("\(n). \(game.title)")
+                }
             }
+            } else {
+                for (n, game) in gameArray.enumerated() {
+                    if game.rating != "m" && game.rating != "t" {
+                        print("\(n). \(game.title)")
+                    }
+                }
+            }
+        } else {
+            print("you didnt put in an age.")
         }
         
-        print("please enter the index of the game you wish to check out:\n")
+        print("what game do you want to check out?")
         
         var userInput = Int(readLine()!)
         
