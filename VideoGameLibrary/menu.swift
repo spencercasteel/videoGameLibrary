@@ -63,7 +63,7 @@ class Menu {
             help()
         case "3":
             library.listAvailableGames()
-            help()
+           help()
         case "4":
             library.checkGameOut()
             help()
@@ -72,7 +72,6 @@ class Menu {
             help()
         case "6":
             library.listUnavailableGames()
-            help()
         case "7":
             help()
         case "8":

@@ -83,4 +83,3 @@ class MiniGame{
         } while playAgain
     }
 }
-
