@@ -109,7 +109,7 @@ class Library {
     func listAvailableGames() {
         for game in gameArray {
             if game.checkedIn {
-                print(game.title, game.rating)
+                print("\(game.title): \(game.rating)")
                 
             }
         }
